@@ -1,6 +1,8 @@
 import { StyleSheet, Text, Pressable } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 
-const Category = ({category, navigation}) => {
+const Category = ({category}) => {
+  const navigation = useNavigation();
 
   function helloWorld(){
     navigation.navigate('Meals')

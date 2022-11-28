@@ -1,15 +1,15 @@
-import { StyleSheet, FlatList, ScrollView } from 'react-native';
+import { StyleSheet, FlatList } from 'react-native';
 import {CATEGORIES} from '../../data/dummy-data';
 import Category from './Category';
 
-const CategoryList = ({navigation}) => {
+const CategoryList = () => {
 
   return(
       <FlatList
         data={CATEGORIES}
         keyExtractor={(category) => category.id}
         renderItem={(categoryData) => {
-          return <Category category={categoryData.item} navigation={navigation} />
+          return <Category category={categoryData.item} />
         }}
         style={styles.categoryList}
         numColumns={2}
@@ -20,6 +20,5 @@ const CategoryList = ({navigation}) => {
 export default CategoryList;
 
 const styles = StyleSheet.create({
-  categoryList: {
-  }
+  categoryList: {}
 })
