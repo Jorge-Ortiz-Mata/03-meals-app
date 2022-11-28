@@ -1,25 +1,38 @@
-import { StyleSheet, Text, View, Image, useWindowDimensions } from 'react-native';
-import { Colors } from 'react-native/Libraries/NewAppScreen';
+import { StyleSheet, Text, View, Image, useWindowDimensions, Pressable } from 'react-native';
+import Colors from '../../utilities/Colors';
+import { useNavigation } from '@react-navigation/native';
 
 const Meal = ({meal}) => {
-  const {width, height} = useWindowDimensions();
+  const navigation = useNavigation();
+  const {width} = useWindowDimensions();
+
+  function changeScreen(){
+    navigation.navigate('Meal', {
+      meal: meal
+    })
+  }
 
   return(
-    <View style={[styles.container, {marginHorizontal: width < 400 ? 20 : 60}]}>
-      <View>
-        <Image style={styles.image} source={{uri: meal.imageUrl}} />
-      </View>
-      <View style={styles.mealInfo}>
+    <Pressable
+      onPress={changeScreen}
+      style={({pressed}) => pressed && {opacity: 0.6}
+    }>
+      <View style={[styles.container, {marginHorizontal: width < 400 ? 20 : 60}]}>
         <View>
-          <Text>Name:</Text>
-          <Text>{meal.title}</Text>
+          <Image style={styles.image} source={{uri: meal.imageUrl}} />
         </View>
-        <View>
-          <Text>Complexity:</Text>
-          <Text>{meal.complexity.toUpperCase()}</Text>
+        <View style={styles.mealInfo}>
+          <View>
+            <Text>Name:</Text>
+            <Text>{meal.title}</Text>
+          </View>
+          <View>
+            <Text>Complexity:</Text>
+            <Text>{meal.complexity.toUpperCase()}</Text>
+          </View>
         </View>
       </View>
-    </View>
+    </Pressable>
   )
 }
 

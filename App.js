@@ -4,6 +4,7 @@ import { LinearGradient } from 'expo-linear-gradient';
 import Menu from './screens/Menu';
 import Meals from './screens/Meals';
 import Welcome from './screens/Welcome';
+import Meal from './screens/Meal';
 import Colors from './utilities/Colors';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
@@ -18,9 +19,10 @@ export default function App() {
       <ImageBackground source={image} resizeMode='contain' style={styles.imageBack} imageStyle={styles.imageOpacity} >
         <NavigationContainer>
           <Stack.Navigator initialRouteName='Welcome'>
+            <Stack.Screen name='Welcome' component={Welcome} />
             <Stack.Screen name='Menu' component={Menu} />
             <Stack.Screen name='Meals' component={Meals} />
-            <Stack.Screen name='Welcome' component={Welcome} />
+            <Stack.Screen name='Meal' component={Meal} />
           </Stack.Navigator>
         </NavigationContainer>
         <StatusBar style="auto" />
