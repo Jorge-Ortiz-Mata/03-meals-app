@@ -1,21 +1,32 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, ImageBackground } from 'react-native';
+import { LinearGradient } from 'expo-linear-gradient';
+import Menu from './screens/Menu';
+import Colors from './utilities/Colors';
+
+const image = require('./assets/images/food.png')
 
 export default function App() {
+
   return (
-    <View style={styles.container}>
-      <Text>¡Start from here!</Text>
-      <Text style={{fontWeight: '600'}}>/App.js</Text>
-      <StatusBar style="auto" />
-    </View>
+    <LinearGradient colors={[Colors.primaryColor, Colors.secondaryColor]} style={styles.container}>
+      <ImageBackground source={image} resizeMode='contain' style={styles.imageBack} imageStyle={styles.imageOpacity} >
+        <Menu />
+        <StatusBar style="auto" />
+      </ImageBackground>
+    </LinearGradient>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
+  },
+  imageBack: {
+    flex: 1,
     justifyContent: 'center',
   },
+  imageOpacity: {
+    opacity: 0.3
+  }
 });

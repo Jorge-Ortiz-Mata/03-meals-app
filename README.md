@@ -1,7 +1,5 @@
 # React Native and Docker Quickstart.
 
-![](./images/01.png)
-
 React native and Docker Quickstart offers basic configuration you can use to create your own React Native Apps within Docker Containers.
 
 ## What you need.
