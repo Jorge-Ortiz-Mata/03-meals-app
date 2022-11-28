@@ -1,20 +1,23 @@
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, Image, useWindowDimensions } from 'react-native';
+import { Colors } from 'react-native/Libraries/NewAppScreen';
 
 const Meal = ({meal}) => {
+  const {width, height} = useWindowDimensions();
 
   return(
-    <View>
+    <View style={[styles.container, {marginHorizontal: width < 400 ? 20 : 60}]}>
       <View>
-        <Text>Name:</Text>
-        <Text>{meal.title}</Text>
+        <Image style={styles.image} source={{uri: meal.imageUrl}} />
       </View>
-      <View>
-        <Text>Complexity:</Text>
-        <Text>{meal.complexity}</Text>
-      </View>
-      <View>
-        <Text>Duration:</Text>
-        <Text>{meal.duration} min.</Text>
+      <View style={styles.mealInfo}>
+        <View>
+          <Text>Name:</Text>
+          <Text>{meal.title}</Text>
+        </View>
+        <View>
+          <Text>Complexity:</Text>
+          <Text>{meal.complexity.toUpperCase()}</Text>
+        </View>
       </View>
     </View>
   )
@@ -22,4 +25,22 @@ const Meal = ({meal}) => {
 
 export default Meal;
 
-const styles = StyleSheet.create({})
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    flexDirection: 'row',
+    borderRadius: 10,
+    marginVertical: 20,
+    elevation: 10
+  },
+  image: {
+    width: 110,
+    height: 125,
+  },
+  mealInfo:{
+    backgroundColor: Colors.white,
+    flex: 1,
+    flexDirection: 'column',
+    padding: 5
+  }
+})
