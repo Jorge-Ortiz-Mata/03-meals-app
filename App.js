@@ -16,7 +16,7 @@ export default function App() {
     <LinearGradient colors={[Colors.primaryColor, Colors.secondaryColor]} style={styles.container}>
       <ImageBackground source={image} resizeMode='contain' style={styles.imageBack} imageStyle={styles.imageOpacity} >
         <NavigationContainer>
-          <Stack.Navigator>
+          <Stack.Navigator initialRouteName='Menu'>
             <Stack.Screen name='Menu' component={Menu} />
             <Stack.Screen name='Meals' component={Meals} />
           </Stack.Navigator>
