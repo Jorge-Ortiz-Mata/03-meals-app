@@ -1,11 +1,11 @@
-import { StyleSheet, Text, View, FlatList } from 'react-native';
-import { MEALS } from '../data/dummy-data'
+import { StyleSheet, Text, View } from 'react-native';
+import MealList from '../components/meals/MealList';
 
 const Meals = () => {
 
   return(
     <View style={styles.container}>
-      <Text>My meals</Text>
+      <MealList />
     </View>
   )
 }
