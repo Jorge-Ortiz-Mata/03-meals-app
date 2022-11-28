@@ -1,10 +1,13 @@
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, FlatList } from 'react-native';
+import CategoryList from '../components/menu/CategoryList';
 
 const Menu = () => {
 
   return(
     <View style={styles.main}>
-      <Text>Menu Hello World</Text>
+      <View>
+        <CategoryList />
+      </View>
     </View>
   )
 }
@@ -13,6 +16,7 @@ export default Menu;
 
 const styles = StyleSheet.create({
   main: {
-    flex: 1
+    flex: 1,
+    justifyContent: 'center'
   }
 })
