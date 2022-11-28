@@ -1,12 +1,12 @@
 import { StyleSheet, Text, View, FlatList } from 'react-native';
 import CategoryList from '../components/menu/CategoryList';
 
-const Menu = () => {
+const Menu = ({navigation}) => {
 
   return(
     <View style={styles.main}>
       <View>
-        <CategoryList />
+        <CategoryList navigation={navigation} />
       </View>
     </View>
   )

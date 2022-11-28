@@ -1,10 +1,11 @@
-import { StyleSheet, View, Text, Pressable } from 'react-native';
+import { StyleSheet, Text, Pressable } from 'react-native';
 
-const Category = ({category}) => {
+const Category = ({category, navigation}) => {
 
   function helloWorld(){
-    console.log('Hello World')
+    navigation.navigate('Meals')
   }
+
   return(
     <Pressable
       onPress={helloWorld}

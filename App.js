@@ -2,6 +2,7 @@ import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, ImageBackground } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import Menu from './screens/Menu';
+import Meals from './screens/Meals';
 import Colors from './utilities/Colors';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
@@ -17,6 +18,7 @@ export default function App() {
         <NavigationContainer>
           <Stack.Navigator>
             <Stack.Screen name='Menu' component={Menu} />
+            <Stack.Screen name='Meals' component={Meals} />
           </Stack.Navigator>
         </NavigationContainer>
         <StatusBar style="auto" />
