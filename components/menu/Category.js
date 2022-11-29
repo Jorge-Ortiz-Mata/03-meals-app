@@ -6,7 +6,7 @@ const Category = ({category}) => {
 
   function helloWorld(){
     navigation.navigate('Meals', {
-      id: category.id
+      category: category
     })
   }
 
