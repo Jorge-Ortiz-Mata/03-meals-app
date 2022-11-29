@@ -26,15 +26,7 @@ export default function App() {
           title: 'Categories',
         }} />
         <Stack.Screen name='Meals' component={Meals} />
-        <Stack.Screen name='Meal'
-          component={Meal}
-          options={({route, navigation}) => {
-            const title = route.params.meal.title
-            return {
-              title: title
-            };
-          }}
-        />
+        <Stack.Screen name='Meal' component={Meal} />
       </Stack.Navigator>
       <StatusBar style='light' />
     </NavigationContainer>

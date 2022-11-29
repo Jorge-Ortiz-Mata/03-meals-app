@@ -1,9 +1,25 @@
-import { StyleSheet, Text, View, Image } from 'react-native';
-import { useRoute } from '@react-navigation/native';
+import { StyleSheet, Text, View, Image, Pressable } from 'react-native';
+import { useRoute, useNavigation } from '@react-navigation/native';
+import { useLayoutEffect } from 'react';
+import { AntDesign } from '@expo/vector-icons';
 
 const Meal = () => {
   const route = useRoute();
   const meal = route.params.meal;
+  const navigation = useNavigation();
+
+  function addToFavourites(){
+    console.log('Adding...')
+  }
+
+  useLayoutEffect(() => {
+    navigation.setOptions({
+      title: meal.title,
+      headerRight: () => {
+        return <Pressable onPress={addToFavourites}><AntDesign name="hearto" size={24} color="red" /></Pressable>
+      }
+    })
+  }, [navigation, meal]);
 
   return(
     <View>
