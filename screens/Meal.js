@@ -1,5 +1,6 @@
-import { StyleSheet, Text, View, Image, Pressable } from 'react-native';
+import { StyleSheet, ScrollView, View, Image, Pressable } from 'react-native';
 import { useRoute, useNavigation } from '@react-navigation/native';
+import MealInfo from '../components/meal/MealInfo';
 import { useLayoutEffect } from 'react';
 import { AntDesign } from '@expo/vector-icons';
 
@@ -16,31 +17,40 @@ const Meal = () => {
     navigation.setOptions({
       title: meal.title,
       headerRight: () => {
-        return <Pressable onPress={addToFavourites}><AntDesign name="hearto" size={24} color="red" /></Pressable>
+        return <Pressable onPress={addToFavourites}><AntDesign name="heart" size={24} color='#fff' /></Pressable>
       }
     })
   }, [navigation, meal]);
 
   return(
-    <View>
-      <View>
-        <Image style={styles.image} source={{uri: meal.imageUrl}} />
-      </View>
-      <View style={styles.mealInfo}>
+    <ScrollView>
+      <View style={styles.container}>
         <View>
-          <Text>Name:</Text>
-          <Text>{meal.title}</Text>
+          <Image style={styles.image} source={{uri: meal.imageUrl}} />
+        </View>
+        <View style={styles.mealInfo}>
+          <MealInfo meal={meal} />
         </View>
       </View>
-    </View>
+    </ScrollView>
   )
 }
 
 export default Meal;
 
 const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    alignItems: 'center',
+  },
   image: {
+    marginTop: 10,
+    borderRadius: 20,
     width: 200,
     height: 200,
+  },
+  mealInfo: {
+    marginVertical: 20,
+    width: '80%'
   }
 })

@@ -1,4 +1,5 @@
 import { StatusBar } from 'expo-status-bar';
+import { Ionicons } from '@expo/vector-icons';
 import { StyleSheet } from 'react-native';
 import Menu from './screens/Menu';
 import Meals from './screens/Meals';
@@ -17,11 +18,41 @@ function DrawerNavigation(){
   return <Drawer.Navigator screenOptions={{
     headerStyle: styles.header,
     headerTintColor: Colors.white,
-    sceneContainerStyle: { backgroundColor: Colors.secondaryColor }
+    sceneContainerStyle: { backgroundColor: Colors.secondaryColor },
+    drawerContentStyle: { backgroundColor: Colors.secondaryColor },
+    drawerInactiveTintColor: Colors.primaryColor,
+    drawerActiveTintColor: '#ff0000'
   }}>
-    <Drawer.Screen name='WelcomeDrawer' component={Welcome} options={{title: 'Welcome'}} />
-    <Drawer.Screen name='MealsCategories' component={Menu} options={{title: 'All Categories'}} />
-    <Drawer.Screen name='Favorites' component={Favorites} />
+    <Drawer.Screen
+      name='WelcomeDrawer'
+      component={Welcome}
+      options={{
+        title: 'Welcome',
+        drawerIcon: ({size}) => (
+          <Ionicons name='heart' color={Colors.primaryColor} size={size} />
+        ),
+      }}
+    />
+    <Drawer.Screen
+      name='MealsCategories'
+      component={Menu}
+      options={{
+        title: 'All Categories',
+        drawerIcon: ({size}) => (
+          <Ionicons name='list' color={Colors.primaryColor} size={size} />
+        )
+      }}
+    />
+    <Drawer.Screen
+      name='Favorites'
+      component={Favorites}
+      options={{
+        title: 'Favorite',
+        drawerIcon: ({size}) => (
+          <Ionicons name='star' color={Colors.primaryColor} size={size} />
+        )
+      }}
+    />
   </Drawer.Navigator> ;
 }
 
@@ -43,7 +74,7 @@ export default function App() {
         <Stack.Screen name='Meals' component={Meals} />
         <Stack.Screen name='Meal' component={Meal} />
       </Stack.Navigator>
-      <StatusBar style='dark  ' />
+      <StatusBar style='light' />
     </NavigationContainer>
   );
 }

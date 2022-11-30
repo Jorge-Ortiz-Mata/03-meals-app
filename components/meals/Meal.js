@@ -13,26 +13,25 @@ const Meal = ({meal}) => {
   }
 
   return(
-    <Pressable
-      onPress={changeScreen}
-      style={({pressed}) => pressed && {opacity: 0.6}
-    }>
-      <View style={[styles.container, {marginHorizontal: width < 400 ? 20 : 60}]}>
-        <View>
-          <Image style={styles.image} source={{uri: meal.imageUrl}} />
-        </View>
-        <View style={styles.mealInfo}>
+    <View>
+      <Pressable
+        onPress={changeScreen}
+        style={({pressed}) =>
+          pressed ? [styles.container, {opacity: 0.5}] : [styles.container]
+        }
+      >
           <View>
-            <Text>Name:</Text>
-            <Text>{meal.title}</Text>
+            <Image style={styles.image} source={{uri: meal.imageUrl}} />
           </View>
-          <View>
-            <Text>Complexity:</Text>
-            <Text>{meal.complexity.toUpperCase()}</Text>
+          <View style={styles.mealInfo}>
+            <View>
+              <Text style={styles.title}>{meal.title}</Text>
+              <Text>Difficulty: {meal.complexity}</Text>
+              <Text>Price: {meal.affordability}</Text>
+            </View>
           </View>
-        </View>
-      </View>
-    </Pressable>
+      </Pressable>
+    </View>
   )
 }
 
@@ -44,16 +43,34 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     borderRadius: 10,
     marginVertical: 20,
-    elevation: 10
+    marginHorizontal: 20,
+    elevation: 10,
+    shadowColor: "#000",
+    shadowOffset: {
+      width: 0,
+      height: 5,
+    },
+    shadowOpacity: 0.34,
+    shadowRadius: 6.27,
   },
   image: {
     width: 110,
     height: 125,
+    borderTopLeftRadius: 10,
+    borderBottomLeftRadius: 10
   },
   mealInfo:{
     backgroundColor: Colors.white,
     flex: 1,
     flexDirection: 'column',
-    padding: 5
+    padding: 5,
+    borderTopRightRadius: 10,
+    borderBottomRightRadius: 10,
+    paddingTop: 10,
+    overflow: 'hidden'
+  },
+  title: {
+    fontWeight: '900',
+    marginBottom: 5
   }
 })

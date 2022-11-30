@@ -1,22 +1,13 @@
-
-import { StyleSheet, Text, View, FlatList, Pressable } from 'react-native';
+import { StyleSheet, Text, View, Image } from 'react-native';
 import Colors from '../utilities/Colors';
 
-const Welcome = ({navigation}) => {
-
-  function startApp(){
-    navigation.navigate('Menu')
-  }
+const Welcome = () => {
 
   return (
     <View style={styles.container}>
-      <Text>Welome Screen</Text>
-      <Pressable
-        onPress={startApp}
-        style={styles.btn}
-      >
-        <Text style={[{color: Colors.white}, {fontWeight: 'bold'}, {fontSize: 16}]}>Start</Text>
-      </Pressable>
+      <Image source={require('../assets/images/01.png')} style={styles.image} />
+      <Text style={{fontWeight: 'bold', fontSize: 30, color: Colors.primaryColor}}>The Green Kitchen</Text>
+      <Text style={{textAlign: 'center', padding: 20, color: Colors.primaryColor, fontWeight: '700'}}>You'll find a lot of meals with their own description, ingredients and preparation.</Text>
     </View>
   )
 }
@@ -29,10 +20,8 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center'
   },
-  btn: {
-    padding: 20,
-    borderRadius: 10,
-    backgroundColor: Colors.primaryColor,
-    marginVertical: 20
+  image: {
+    width: 250,
+    height: 250,
   }
 });
