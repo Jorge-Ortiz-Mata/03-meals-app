@@ -7,8 +7,14 @@ import Meal from './screens/Meal';
 import Colors from './utilities/Colors';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { createDrawerNavigator } from '@react-navigation/drawer';
 
 const Stack = createNativeStackNavigator();
+// const Drawer = createDrawerNavigator();
+
+function DrawerNavigation(){
+  return;
+}
 
 export default function App() {
 
