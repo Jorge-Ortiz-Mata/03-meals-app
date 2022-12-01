@@ -21,7 +21,7 @@ function DrawerNavigation(){
     sceneContainerStyle: { backgroundColor: Colors.secondaryColor },
     drawerContentStyle: { backgroundColor: Colors.secondaryColor },
     drawerInactiveTintColor: Colors.primaryColor,
-    drawerActiveTintColor: '#ff0000'
+    drawerActiveTintColor: Colors.primaryColor
   }}>
     <Drawer.Screen
       name='WelcomeDrawer'
