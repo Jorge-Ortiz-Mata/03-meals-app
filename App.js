@@ -10,6 +10,7 @@ import Colors from './utilities/Colors';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { createDrawerNavigator } from '@react-navigation/drawer';
+import FavoritesContextProvider from './store/context/favorites-context';
 
 const Stack = createNativeStackNavigator();
 const Drawer = createDrawerNavigator();
@@ -59,23 +60,25 @@ function DrawerNavigation(){
 export default function App() {
 
   return (
-    <NavigationContainer>
-      <Stack.Navigator initialRouteName='Welcome' screenOptions={{
-        headerStyle: styles.header,
-        headerTintColor: Colors.white,
-        contentStyle: { backgroundColor: Colors.secondaryColor }
-      }} >
-        <Stack.Screen name='Welcome' component={DrawerNavigation} options={{
-          headerShown: false
-        }} />
-        <Stack.Screen name='Menu' component={DrawerNavigation} options={{
-          headerShown: false
-        }} />
-        <Stack.Screen name='Meals' component={Meals} />
-        <Stack.Screen name='Meal' component={Meal} />
-      </Stack.Navigator>
-      <StatusBar style='light' />
-    </NavigationContainer>
+    <FavoritesContextProvider>
+      <NavigationContainer>
+        <Stack.Navigator initialRouteName='Welcome' screenOptions={{
+          headerStyle: styles.header,
+          headerTintColor: Colors.white,
+          contentStyle: { backgroundColor: Colors.secondaryColor }
+        }} >
+          <Stack.Screen name='Welcome' component={DrawerNavigation} options={{
+            headerShown: false
+          }} />
+          <Stack.Screen name='Menu' component={DrawerNavigation} options={{
+            headerShown: false
+          }} />
+          <Stack.Screen name='Meals' component={Meals} />
+          <Stack.Screen name='Meal' component={Meal} />
+        </Stack.Navigator>
+        <StatusBar style='light' />
+      </NavigationContainer>
+    </FavoritesContextProvider>
   );
 }
 

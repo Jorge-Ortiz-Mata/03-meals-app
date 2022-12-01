@@ -1,32 +1,46 @@
-import { StyleSheet, ScrollView, View, Image, Pressable } from 'react-native';
+import { StyleSheet, ScrollView, View, Image, Pressable, Text } from 'react-native';
 import { useRoute, useNavigation } from '@react-navigation/native';
 import MealInfo from '../components/meal/MealInfo';
-import { useLayoutEffect } from 'react';
+import { useContext, useLayoutEffect } from 'react';
 import { AntDesign } from '@expo/vector-icons';
+import { FavoritesContext } from '../store/context/favorites-context';
 
 const Meal = () => {
+  const favoriteMealsContext = useContext(FavoritesContext);
+
   const route = useRoute();
   const meal = route.params.meal;
   const navigation = useNavigation();
 
-  function addToFavourites(){
-    console.log('Adding...')
+  const mealIsFavorite = favoriteMealsContext.ids.includes(meal.id);
+
+  function addToFavorites(){
+    if(mealIsFavorite){
+      favoriteMealsContext.removeFavorite(meal.id)
+    } else {
+      favoriteMealsContext.addFavorite(meal.id)
+    }
   }
 
   useLayoutEffect(() => {
     navigation.setOptions({
       title: meal.title,
       headerRight: () => {
-        return <Pressable onPress={addToFavourites}><AntDesign name="heart" size={24} color='#fff' /></Pressable>
+        return <Pressable onPress={addToFavorites}>
+          <AntDesign name={mealIsFavorite ? 'heart' : 'hearto'} size={24} color='#fff' />
+        </Pressable>
       }
     })
-  }, [navigation, meal]);
+  }, [navigation, addToFavorites]);
 
   return(
     <ScrollView>
       <View style={styles.container}>
         <View>
-          <Image style={styles.image} source={{uri: meal.imageUrl}} />
+          <Image
+            style={styles.image}
+            source={{uri: meal.imageUrl}}
+          />
         </View>
         <View style={styles.mealInfo}>
           <MealInfo meal={meal} />
