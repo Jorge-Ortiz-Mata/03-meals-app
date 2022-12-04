@@ -30,6 +30,6 @@ const styles = StyleSheet.create({
     fontSize: 26,
     marginTop: 15,
     fontWeight: 'bold',
-    textAlign: 'center'
+    textAlign: 'center',
   }
 })
