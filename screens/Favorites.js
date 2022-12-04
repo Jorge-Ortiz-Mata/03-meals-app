@@ -6,19 +6,12 @@ import { MEALS } from '../data/dummy-data';
 
 const Favorites = () => {
   const favoriteMealsContext = useContext(FavoritesContext)
-  const displayedMeals = []
-
-  for(let i = 0; i < favoriteMealsContext.ids.length; i++){
-    for(let j = 0; j < MEALS.length; j++){
-      if(favoriteMealsContext.ids[i] == MEALS[j].id){
-        displayedMeals.push(MEALS[j])
-      }
-    }
-  }
+  const displayedMeals = MEALS.filter((meal) => favoriteMealsContext.ids.includes(meal.id))
 
   return(
     <>
-      <Text style={styles.title}>Favorites</Text>
+      <Text style={styles.title}>My Favorites Meals</Text>
+      <Text style={{textAlign: 'center', marginBottom: 15}}>2022 @ Made by Jorge Ortiz</Text>
       <FlatList
         data={displayedMeals}
         keyExtractor={(meal) => meal.id}
@@ -34,9 +27,8 @@ export default Favorites;
 
 const styles = StyleSheet.create({
   title: {
-    fontSize: 30,
+    fontSize: 26,
     marginTop: 15,
-    marginBottom: 25,
     fontWeight: 'bold',
     textAlign: 'center'
   }
